@@ -14,7 +14,7 @@ $idar = $_GET['id'];
 
 
 
-$sql = 'UPDATE arts SET Naam_Arts = :Naamarts ,Address = :Adress, Email = :Email, Telefoonnummer = :Telefoonnummer WHERE idArts = :idar';
+$sql = 'UPDATE gebruikers SET Naam_Gebruiker = :Naamarts ,Address = :Adress, Email = :Email, Telefoonnummer = :Telefoonnummer WHERE idGebruiker = :idar';
 
 $statement = $pdo->prepare($sql);
 

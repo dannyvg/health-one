@@ -6,6 +6,9 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: index.php');
     exit;
 }
+elseif($_SESSION['role'] == 3){
+    header('Location: home.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,8 +43,8 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="form-group mb-3"><label class="form-label">Wachtwoord*</label><input class="form-control" type="password" placeholder="Wachtwoord" name="wachtwoord" required=""></div>
                 <div class="form-group mb-3"><label class="form-label">Role*</label><select class="form-select countries order-alpha limit-pop-1000000 presel-MX group-continents group-order-na" id="roles" name="roles" required="">
                         <option value="1">verzekeraar</option>
-                        <option value="2">Arts</option>
-                        <option value="3">Apotheek</option>
+                        <option value="2">Apotheek</option>
+                        <option value="3">Arts</option>
                     </select></div>
                 <hr style="margin-top: 30px;margin-bottom: 10px;">
                 <div class="form-group mb-3"><button class="btn btn-primary d-block w-100" type="submit"><i class="fas fa-save"></i>&nbsp;Opslaan</button></div>

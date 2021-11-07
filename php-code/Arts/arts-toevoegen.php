@@ -40,8 +40,10 @@ include '../../nav.php';
 
             <div class="form-group mb-3"><label class="form-label">Naam Arts*</label><input class="form-control" type="text" placeholder="Naam Arts" name="Naam-arts" required=""></div>
             <div class="form-group mb-3"><label class="form-label">Adress*</label><input class="form-control" type="text" placeholder="Adress" name="Adress" required=""></div>
-            <div class="form-group mb-3"><label class="form-label">Telefoonnummer*</label><input class="form-control" type="email" placeholder="Telefoonnummer" name="Telefoonnummer" required=""></div>
-            <div class="form-group mb-3"><label class="form-label">Email*</label><input class="form-control" type="text" placeholder="Email" name="Email" required=""></div>
+            <div class="form-group mb-3"><label class="form-label">Telefoonnummer*</label><input class="form-control" type="text" placeholder="Telefoonnummer" name="Telefoonnummer" required=""></div>
+            <div class="form-group mb-3"><label class="form-label">Email*</label><input class="form-control" type="email" placeholder="Email" name="Email" required=""></div>
+            <div class="form-group mb-3"><label class="form-label">Wachtwoord*</label><input class="form-control" type="password" placeholder="wachtwoord" name="Password" required=""></div>
+
             
                 
                 <hr style="margin-top: 30px;margin-bottom: 10px;">

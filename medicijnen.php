@@ -5,6 +5,7 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: index.php');
     exit;
 }
+
 ?>
 
 
@@ -27,10 +28,22 @@ if (!isset($_SESSION['loggedin'])) {
 <body>
 
 <?php
-include 'nav.php';
+if($_SESSION['role'] == 1){
+
+echo '<button class="btn btn-primary d-block w-40 patienten-add" onclick="window.location.href=`php-code/Medicijnen/add-medicijnen.php`" type="button">&nbsp;Voeg een medicijn toe</button>';
+
+
+    include ('nav.php');
+} elseif ($_SESSION['role'] == 2){
+    include 'apotheek-nav.php';
+}else{
+    include 'arts-nav.php';
+}
+
 ?>
 
-<button class="btn btn-primary d-block w-40 patienten-add" onclick="window.location.href='php-code/Medicijnen/add-medicijnen.php'" type="button">&nbsp;Voeg een medicijn toe</button>
+<!-- <button class='btn btn-primary d-block w-40 patienten-add' onclick=`window.location.href='php-code/Medicijnen/add-medicijnen.php'` type='button'>&nbsp;Voeg een medicijn toe</button> -->
+<!-- <button class="btn btn-primary d-block w-40 patienten-add" onclick="window.location.href='php-code/Medicijnen/add-medicijnen.php'" type="button">&nbsp;Voeg een medicijn toe</button> -->
 
 
 <div class="views">

@@ -1,6 +1,6 @@
 
 <?php
-require_once 'connect.php';
+require_once '../connect.php';
 $con = new connection();
 $pdo = $con->make();
 
@@ -16,7 +16,7 @@ if ($statement->execute()) {
   echo 'id'. $id . ' was deleted successfully.';
 }
 
-header('location: ./patienten.php');
+header('location: ../../patienten.php');
 
 
 ?>

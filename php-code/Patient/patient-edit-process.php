@@ -22,7 +22,7 @@ $idApotheek = $_POST['idApotheek'];
 
 $sql = 'UPDATE patient
             SET Zilverenkruisnummer = :zkn, Voornaam = :Voornaam, Tussenvoegsel = :Tussenvoegsel, 
-            Achternaam = :Achternaam, Geboortedatum = :Geboortedatum, Email = :Email, Telefoonnummer = :tel,
+            Achternaam = :Achternaam, Geboortedatum = :Geboortedatum, Email_Patient = :Email, Telefoonnummer = :tel,
             Bezonderheden = :Bijzonderheden, Arts_idArts = :idArts, 
             Apotheek_idApotheek = :idApotheek
             WHERE idPatient = :id';

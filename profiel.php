@@ -27,7 +27,13 @@ if (!isset($_SESSION['loggedin'])) {
 <body>
 
 <?php
-require ('nav.php');
+if($_SESSION['role'] == 1){
+    include ('nav.php');
+} elseif ($_SESSION['role'] == 2){
+    include ('apotheek-nav.php');
+}else{
+    include 'arts-nav.php';
+}
 ?>
 
 <section class="clean-block clean-form h-100">

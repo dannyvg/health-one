@@ -43,6 +43,7 @@ include '../../nav.php';
             <div class="form-group mb-3"><label class="form-label">Stad*</label><input class="form-control" type="text" placeholder="Stad" name="Stad" required=""></div>
             <div class="form-group mb-3"><label class="form-label">Email*</label><input class="form-control" type="email" placeholder="Email" name="Email" required=""></div>
             <div class="form-group mb-3"><label class="form-label">Telefoonnummer*</label><input class="form-control" type="text" placeholder="Telefoonnummer" name="Telefoonnummer" required=""></div>
+            <div class="form-group mb-3"><label class="form-label">Wachtwoord*</label><input class="form-control" type="password" placeholder="wachtwoord" name="Password" required=""></div>
                 
                 <hr style="margin-top: 30px;margin-bottom: 10px;">
                 <div class="form-group mb-3"><button class="btn btn-primary d-block w-100" type="submit"><i class="fas fa-save"></i>&nbsp;Opslaan</button></div>

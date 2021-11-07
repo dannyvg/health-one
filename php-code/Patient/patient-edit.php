@@ -61,7 +61,7 @@ include '../../nav.php';
                 <div class="form-group mb-3"><label class="form-label">Tussenvoegsel*</label><input class="form-control" type="text" placeholder="Tussenvoegsel" name="Tussenvoegsel" value="<?php echo $result['Tussenvoegsel'];?>" required=""></div>
                 <div class="form-group mb-3"><label class="form-label">Achternaam*</label><input class="form-control" type="text" placeholder="Achternaam" name="Achternaam" value="<?php echo $result['Achternaam'];?>" required=""></div>
                 <div class="form-group mb-3"><label class="form-label">Geboortedatum*</label><input class="form-control" type="Date" placeholder="Geboortedatum" name="Geboortedatum" value="<?php echo $result['Geboortedatum'];?>" required=""></div>
-                <div class="form-group mb-3"><label class="form-label">Email*</label><input class="form-control" type="email" placeholder="Email" name="email" value="<?php echo $result['Email'];?>" required=""></div>
+                <div class="form-group mb-3"><label class="form-label">Email*</label><input class="form-control" type="email" placeholder="Email" name="email" value="<?php echo $result['Email_Patient'];?>" required=""></div>
                 <div class="form-group mb-3"><label class="form-label">Telefoonnummer*</label><input class="form-control" type="text" placeholder="Telefoonnummer" name="tel" value="<?php echo $result['Telefoonnummer'];?>" required=""></div>
                 <div class="form-group mb-3"><label class="form-label">Bijzonderheden</label><textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="Bijzonderheden" placeholder="Bijzonderheden"> <?php echo $result['Bezonderheden'];?> </textarea></div>
                 
@@ -71,7 +71,7 @@ include '../../nav.php';
 
                     $rows = dropdownarts();
                     foreach($rows as $row){
-                        echo "<option value='". $row['idArts'] . "'>" . $row['Naam_Arts'] . "</option>";
+                        echo "<option value='". $row['idGebruiker'] . "'>" . $row['Naam_Gebruiker'] . "</option>";
                     }
                   ?>
                 </select></div>
@@ -84,7 +84,7 @@ include '../../nav.php';
                   
                     
                     foreach($rows2 as $row){
-                        echo "<option value='". $row['idApotheek'] . "'>" . $row['Naam_Apotheek'] . "</option>";
+                        echo "<option value='". $row['idGebruiker'] . "'>" . $row['Naam_Gebruiker'] . "</option>";
                     }
                   ?>  
                   </select></div>
