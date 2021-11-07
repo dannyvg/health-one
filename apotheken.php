@@ -5,6 +5,9 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: index.php');
     exit;
 }
+elseif($_SESSION['role'] == 3){
+    header('Location: home.php');
+}
 ?>
 
 

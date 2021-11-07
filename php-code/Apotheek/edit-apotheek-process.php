@@ -12,7 +12,7 @@ $Telefoonnummer = $_POST['Telefoonnummer'];
 
 $ida = $_GET['id'];
 
-$sql = 'UPDATE apotheek SET Naam_Apotheek = :NaamApo ,Address = :Adress, Stad = :Stad, Email = :Email, Telefoonnummer = :Telefoonnummer WHERE idApotheek = :ida';
+$sql = 'UPDATE gebruikers SET Naam_Gebruiker = :NaamApo ,Address = :Adress, Stad = :Stad, Email = :Email, Telefoonnummer = :Telefoonnummer WHERE idGebruiker = :ida';
 
 $statement = $pdo->prepare($sql);
 

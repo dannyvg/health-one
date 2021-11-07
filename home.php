@@ -21,7 +21,15 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 <body>
 <?php
-require ('nav.php');
+if($_SESSION['role'] == 1){
+
+    include ('nav.php');
+} elseif ($_SESSION['role'] == 2){
+    include 'apotheek-nav.php';
+}else{
+    include 'arts-nav.php';
+}
+
 ?>
 
 
@@ -62,13 +70,13 @@ if ($_SESSION['role'] == 1){
 
     echo "<div class='role'>Role: Apotheek</div>";
     echo "</br>";
-    echo "Medicijnen";
+    echo '<a href="php-code/Apotheek/voorgeschreven.php">Voorgeschreven</a>';
 
 } elseif($_SESSION['role'] == 3){
 
     echo "<div class='role'>Role: Arts</div>";
     echo "</br>";
-    echo "Patienten";
+    echo '<a href="php-code/Arts/patienten.php">Patienten</a>';
 
 }
 ?>

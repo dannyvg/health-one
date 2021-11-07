@@ -27,10 +27,23 @@ if (!isset($_SESSION['loggedin'])) {
 <body>
 
 <?php
-include 'nav.php';
+if($_SESSION['role'] == 1){
+
+    include ('nav.php');
+} elseif ($_SESSION == 2){
+    include ('nav.php');
+}else{
+    include 'arts-nav.php';
+}
+
+
+if($_SESSION['role'] == 1){
+
+    echo "<button class='btn btn-primary d-block w-40 patienten-add' onclick='window.location.href=`php-code/patient/patienten-toevoegen.php`' type='button'>&nbsp;Voeg patient toe</button>";
+}
 ?>
 
-<button class="btn btn-primary d-block w-40 patienten-add" onclick="window.location.href='php-code/patient/patienten-toevoegen.php'" type="button">&nbsp;Voeg patient toe</button>
+<!-- <button class="btn btn-primary d-block w-40 patienten-add" onclick="window.location.href='php-code/patient/patienten-toevoegen.php'" type="button">&nbsp;Voeg patient toe</button> -->
 
 
 <div class="views">

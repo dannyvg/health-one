@@ -10,10 +10,16 @@ $adress = $_POST['Adress'];
 $stad = $_POST['Stad'];
 $email = $_POST['Email'];
 $telefoon = $_POST['Telefoonnummer'];
+$password = $_POST['Password'];
+$hash = hash('sha256', $password);
 
 
-$sql = 'INSERT INTO apotheek(Naam_Apotheek, Address, Stad, Email, Telefoonnummer) 
-VALUES(:Naamapotheek, :Adress, :Stad, :Email, :Telefoonnummer)';
+
+$role = "2";
+
+
+$sql = 'INSERT INTO gebruikers(Naam_Gebruiker, Address, Stad, Email,wachtwoord, Telefoonnummer, role) 
+VALUES(:Naamapotheek, :Adress, :Stad, :Email, :wachtwoord, :Telefoonnummer, :role)';
 
 $statement = $pdo->prepare($sql);
 
@@ -22,7 +28,9 @@ $statement->execute([
 	':Adress' => $adress,
 	':Stad' => $stad,
 	':Email' => $email,
-	':Telefoonnummer' => $telefoon
+	':wachtwoord' => $hash,
+	':Telefoonnummer' => $telefoon,
+	':role' => $role,
 ]);
 
 header('Location: ../../apotheken.php');

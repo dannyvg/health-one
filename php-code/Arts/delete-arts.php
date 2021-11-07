@@ -6,8 +6,8 @@ $pdo = $con->make();
 
 $id = $_GET['id'];
 
-$sql = 'DELETE FROM arts
-      WHERE idArts = :id';
+$sql = 'DELETE FROM gebruikers
+      WHERE idGebruiker = :id';
 
 $statement = $pdo->prepare($sql);
 $statement->bindParam(':id', $id, PDO::PARAM_INT);

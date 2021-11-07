@@ -45,7 +45,7 @@ include '../../nav.php';
                 $id = $_GET['id'];
 
                 $sql = 'SELECT * 
-		        FROM apotheek WHERE idApotheek=:id';
+		        FROM gebruikers WHERE idGebruiker = :id';
 
                 $statement = $pdo->prepare($sql);
 
@@ -56,7 +56,7 @@ include '../../nav.php';
                 
             ?>
 
-                <div class="form-group mb-3"><label class="form-label">Naam apotheek*</label><input class="form-control" type="text" placeholder="Naam-apotheek" name="Naam-apotheek" value="<?php echo $result['Naam_Apotheek'];?>" required=""></div>        
+                <div class="form-group mb-3"><label class="form-label">Naam apotheek*</label><input class="form-control" type="text" placeholder="Naam-apotheek" name="Naam-apotheek" value="<?php echo $result['Naam_Gebruiker'];?>" required=""></div>        
                 <div class="form-group mb-3"><label class="form-label">Adress*</label><input class="form-control" type="text" placeholder="Adress" name="Adress" value="<?php echo $result['Address'];?>" required=""></div>        
                 <div class="form-group mb-3"><label class="form-label">Stad*</label><input class="form-control" type="text" placeholder="Stad" name="Stad" value="<?php echo $result['Stad'];?>" required=""></div>        
                 <div class="form-group mb-3"><label class="form-label">Email*</label><input class="form-control" type="email" placeholder="Email" name="Email" value="<?php echo $result['Email'];?>" required=""></div>        

@@ -1,9 +1,11 @@
 <?php
 
 $pdo = require_once '../connect.php';
+$con = new connection();
+    $pdo = $con->make();
 
 $Zilverenkruisnummer = $_POST['Zilverenkruisnummer'];
-$zknn = (int)$Zilverenkruisnummer;
+// $zknn = (int)$Zilverenkruisnummer;
 
 $Voornaam = $_POST['Voornaam'];
 $Tussenvoegsel = $_POST['Tussenvoegsel'];
@@ -24,13 +26,13 @@ $Geboortedatum = date('Y-m-d',$time);
 
 
 
-$sql = 'INSERT INTO patient(Zilverenkruisnummer,Voornaam,Tussenvoegsel, Achternaam, Geboortedatum, Email, Telefoonnummer, Bezonderheden, Arts_idArts, Apotheek_idApotheek) 
-VALUES(:Zilverenkruisnummer,:Voornaam,:Tussenvoegsel,:Achternaam,:Geboortedatum,:email,:tel,:Bijzonderheden,:idArts,:idApotheek)';
+$sql = 'INSERT INTO patient(Zilverenkruisnummer,Voornaam,Tussenvoegsel, Achternaam, Geboortedatum, Email_Patient, Telefoonnummer, Bezonderheden, Arts_idArts, Apotheek_idApotheek) 
+VALUES(:Zilverenkruisnummer,:Voornaam,:Tussenvoegsel,:Achternaam,:Geboortedatum,:email,:tel,:Bijzonderheden, :idArts, :idApotheek)';
 
 $statement = $pdo->prepare($sql);
 
 $statement->execute([
-	':Zilverenkruisnummer' => $zknn,
+	':Zilverenkruisnummer' => $Zilverenkruisnummer,
     ':Voornaam' => $Voornaam,
     ':Tussenvoegsel' => $Tussenvoegsel,
     ':Achternaam' => $Achternaam,
@@ -42,5 +44,5 @@ $statement->execute([
     ':idApotheek' => $idApotheek,
 ]);
 
-header('Location: ../patienten.php');
+header('Location: ../../patienten.php');
 // echo $name.' '.'was inserted';

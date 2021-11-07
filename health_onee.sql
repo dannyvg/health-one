@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Gegenereerd op: 29 okt 2021 om 18:56
+-- Gegenereerd op: 07 nov 2021 om 21:44
 -- Serverversie: 8.0.17
 -- PHP-versie: 7.3.8
 
@@ -25,51 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `apotheek`
---
-
-CREATE TABLE `apotheek` (
-  `idApotheek` int(11) NOT NULL,
-  `Naam_Apotheek` varchar(45) NOT NULL,
-  `Address` varchar(255) NOT NULL,
-  `Stad` varchar(255) NOT NULL,
-  `Email` varchar(255) NOT NULL,
-  `Telefoonnummer` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Gegevens worden geëxporteerd voor tabel `apotheek`
---
-
-INSERT INTO `apotheek` (`idApotheek`, `Naam_Apotheek`, `Address`, `Stad`, `Email`, `Telefoonnummer`) VALUES
-(1, 'Danny Apotheek', 'Merelweg 14', 'Culemborg', 'dannyApo@gmail.com', '068456451');
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `arts`
---
-
-CREATE TABLE `arts` (
-  `idArts` int(11) NOT NULL,
-  `Naam_Arts` varchar(45) NOT NULL,
-  `Address` varchar(45) NOT NULL,
-  `Telefoonnummer` varchar(45) NOT NULL,
-  `Email` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Gegevens worden geëxporteerd voor tabel `arts`
---
-
-INSERT INTO `arts` (`idArts`, `Naam_Arts`, `Address`, `Telefoonnummer`, `Email`) VALUES
-(1, 'Danny', 'Monachvlinderlaan 7', '0646508497', 'dannyArts@gmail.com'),
-(3, 'Dannytest', 'Monachvlinderlaan 7', '0646508497', 'danny@test.nl'),
-(4, 'Dannyy', 'Monachvlinderlaan 7', '0646508497', 'dannyy@gmail.com');
-
--- --------------------------------------------------------
-
---
 -- Tabelstructuur voor tabel `gebruikers`
 --
 
@@ -77,8 +32,9 @@ CREATE TABLE `gebruikers` (
   `idGebruiker` int(11) NOT NULL,
   `Naam_Gebruiker` varchar(45) NOT NULL,
   `Address` varchar(255) NOT NULL,
+  `Stad` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Email` varchar(255) NOT NULL,
-  `wachtwoord` varchar(255) NOT NULL,
+  `wachtwoord` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Telefoonnummer` varchar(255) NOT NULL,
   `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -87,10 +43,11 @@ CREATE TABLE `gebruikers` (
 -- Gegevens worden geëxporteerd voor tabel `gebruikers`
 --
 
-INSERT INTO `gebruikers` (`idGebruiker`, `Naam_Gebruiker`, `Address`, `Email`, `wachtwoord`, `Telefoonnummer`, `role`) VALUES
-(1, 'Dannyyy', 'monarch vlinderlaan 7', 'danny@gmail.com', '662c67141c20e7f8730607d8a22aab33088f766c28101b554f1a177e22d45dc7', '0613274566', 1),
-(5, 'DannyTest', 'Monachvlinderlaan 7', 'danny@gmail.com', '662c67141c20e7f8730607d8a22aab33088f766c28101b554f1a177e22d45dc7', '0646508497', 1),
-(6, 'Danny van Gasteren', 'Merelweg 14', 'dokterdanny@gmail.com', '662c67141c20e7f8730607d8a22aab33088f766c28101b554f1a177e22d45dc7', '06 84412154', 3);
+INSERT INTO `gebruikers` (`idGebruiker`, `Naam_Gebruiker`, `Address`, `Stad`, `Email`, `wachtwoord`, `Telefoonnummer`, `role`) VALUES
+(1, 'Dannyyy', 'monarch vlinderlaan 7', 'Culemborg', 'danny@gmail.com', '662c67141c20e7f8730607d8a22aab33088f766c28101b554f1a177e22d45dc7', '613274566', 1),
+(5, 'DannyTest', 'Monachvlinderlaan 7', 'Culemborg', 'danny@gmail.com', '662c67141c20e7f8730607d8a22aab33088f766c28101b554f1a177e22d45dc7', '646508497', 1),
+(6, 'Danny van Gasterennn', 'Merelweg 14', 'Culemborg', 'dokterdanny@gmail.com', '662c67141c20e7f8730607d8a22aab33088f766c28101b554f1a177e22d45dc7', '06 84412154', 3),
+(9, 'Danny Apotheekk', 'apotheeklaan 2', 'Culemborg', 'Dannyapotheek@gmail.com', '662c67141c20e7f8730607d8a22aab33088f766c28101b554f1a177e22d45dc7', '068874841', 2);
 
 -- --------------------------------------------------------
 
@@ -108,7 +65,7 @@ CREATE TABLE `medicijnen` (
 --
 
 INSERT INTO `medicijnen` (`idMedicijnen`, `Naam_Medicijn`) VALUES
-(1, 'Test Medicijn');
+(4, 'test medicijnn');
 
 -- --------------------------------------------------------
 
@@ -118,12 +75,12 @@ INSERT INTO `medicijnen` (`idMedicijnen`, `Naam_Medicijn`) VALUES
 
 CREATE TABLE `patient` (
   `idPatient` int(11) NOT NULL,
-  `Zilverenkruisnummer` int(11) NOT NULL,
+  `Zilverenkruisnummer` varchar(11) NOT NULL,
   `Voornaam` varchar(45) NOT NULL,
   `Tussenvoegsel` varchar(45) DEFAULT NULL,
   `Achternaam` varchar(45) NOT NULL,
   `Geboortedatum` date NOT NULL,
-  `Email` varchar(255) NOT NULL,
+  `Email_Patient` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `Telefoonnummer` varchar(255) NOT NULL,
   `Bezonderheden` varchar(255) DEFAULT NULL,
   `Arts_idArts` int(11) NOT NULL,
@@ -134,11 +91,10 @@ CREATE TABLE `patient` (
 -- Gegevens worden geëxporteerd voor tabel `patient`
 --
 
-INSERT INTO `patient` (`idPatient`, `Zilverenkruisnummer`, `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Geboortedatum`, `Email`, `Telefoonnummer`, `Bezonderheden`, `Arts_idArts`, `Apotheek_idApotheek`) VALUES
-(1, 151, 'Dannyyyy', 'van', 'Gasteren', '2021-09-17', 'dannyvangasteren14@gmail.com', '0646508497', ' tetsen  ', 3, 1),
-(3, 351, 'Jay', 'van', 'Schaik', '2021-09-01', 'jay@gmail.com', '06844844', 'niks', 3, 1),
-(4, 4545, 'Mayra', 'van', 'Jansen', '2002-10-11', 'mayra@gmail.com', '06784554', NULL, 1, 1),
-(5, 555, 'Da', 'Da', 'Da', '2021-10-13', 'd@fmail.com', '0658445', 'niks', 3, 1);
+INSERT INTO `patient` (`idPatient`, `Zilverenkruisnummer`, `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Geboortedatum`, `Email_Patient`, `Telefoonnummer`, `Bezonderheden`, `Arts_idArts`, `Apotheek_idApotheek`) VALUES
+(6, '151', 'Dannyy', 'van', 'Gasteren', '2021-09-17', 'dannyvangasteren14@gmail.com', '0646508497', ' testen ', 6, 9),
+(7, '351', 'Jay', 'van', 'Schaik', '2021-09-01', 'jay@gmail.com', '06844844', 'niks', 6, 9),
+(8, '4545', 'Mayra', 'van', 'Jansen', '2002-10-11', 'mayra@gmail.com', '06784554', NULL, 6, 9);
 
 -- --------------------------------------------------------
 
@@ -147,35 +103,27 @@ INSERT INTO `patient` (`idPatient`, `Zilverenkruisnummer`, `Voornaam`, `Tussenvo
 --
 
 CREATE TABLE `patient_has_medicijnen` (
+  `id` int(11) NOT NULL,
   `Patient_idPatient` int(11) NOT NULL,
   `Medicijnen_idMedicijnen` int(11) NOT NULL,
   `Dosis` varchar(45) NOT NULL,
   `Duur` date NOT NULL,
-  `Duur_tot` date NOT NULL
+  `Duur_tot` date NOT NULL,
+  `afgeleverd` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `patient_has_medicijnen`
 --
 
-INSERT INTO `patient_has_medicijnen` (`Patient_idPatient`, `Medicijnen_idMedicijnen`, `Dosis`, `Duur`, `Duur_tot`) VALUES
-(1, 1, '50MG', '2021-10-27', '2021-10-31');
+INSERT INTO `patient_has_medicijnen` (`id`, `Patient_idPatient`, `Medicijnen_idMedicijnen`, `Dosis`, `Duur`, `Duur_tot`, `afgeleverd`) VALUES
+(1, 6, 4, '50MG', '2021-11-03', '2021-11-10', 1),
+(2, 6, 4, '20mg', '2021-11-05', '2021-11-12', 0),
+(5, 6, 4, '20mg', '2021-11-02', '2021-11-04', 0);
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
-
---
--- Indexen voor tabel `apotheek`
---
-ALTER TABLE `apotheek`
-  ADD PRIMARY KEY (`idApotheek`);
-
---
--- Indexen voor tabel `arts`
---
-ALTER TABLE `arts`
-  ADD PRIMARY KEY (`idArts`);
 
 --
 -- Indexen voor tabel `gebruikers`
@@ -193,51 +141,46 @@ ALTER TABLE `medicijnen`
 -- Indexen voor tabel `patient`
 --
 ALTER TABLE `patient`
-  ADD PRIMARY KEY (`idPatient`,`Apotheek_idApotheek`),
-  ADD KEY `fk_Patient_Arts1_idx` (`Arts_idArts`),
-  ADD KEY `fk_Patient_Apotheek1_idx` (`Apotheek_idApotheek`);
+  ADD PRIMARY KEY (`idPatient`),
+  ADD KEY `fk_patient_gebruikers1_idx` (`Arts_idArts`),
+  ADD KEY `fk_patient_gebruikers2_idx` (`Apotheek_idApotheek`);
 
 --
 -- Indexen voor tabel `patient_has_medicijnen`
 --
 ALTER TABLE `patient_has_medicijnen`
-  ADD PRIMARY KEY (`Patient_idPatient`,`Medicijnen_idMedicijnen`),
+  ADD PRIMARY KEY (`Patient_idPatient`,`Medicijnen_idMedicijnen`,`id`),
   ADD KEY `fk_Patient_has_Medicijnen_Medicijnen1_idx` (`Medicijnen_idMedicijnen`),
-  ADD KEY `fk_Patient_has_Medicijnen_Patient_idx` (`Patient_idPatient`);
+  ADD KEY `fk_Patient_has_Medicijnen_Patient_idx` (`Patient_idPatient`),
+  ADD KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT voor een tabel `apotheek`
---
-ALTER TABLE `apotheek`
-  MODIFY `idApotheek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT voor een tabel `arts`
---
-ALTER TABLE `arts`
-  MODIFY `idArts` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT voor een tabel `gebruikers`
 --
 ALTER TABLE `gebruikers`
-  MODIFY `idGebruiker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idGebruiker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT voor een tabel `medicijnen`
 --
 ALTER TABLE `medicijnen`
-  MODIFY `idMedicijnen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idMedicijnen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT voor een tabel `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `idPatient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idPatient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT voor een tabel `patient_has_medicijnen`
+--
+ALTER TABLE `patient_has_medicijnen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
@@ -247,8 +190,8 @@ ALTER TABLE `patient`
 -- Beperkingen voor tabel `patient`
 --
 ALTER TABLE `patient`
-  ADD CONSTRAINT `FK_patient_apotheek` FOREIGN KEY (`Apotheek_idApotheek`) REFERENCES `apotheek` (`idApotheek`),
-  ADD CONSTRAINT `fk_Patient_Arts1` FOREIGN KEY (`Arts_idArts`) REFERENCES `arts` (`idArts`);
+  ADD CONSTRAINT `fk_patient_gebruikers1` FOREIGN KEY (`Arts_idArts`) REFERENCES `gebruikers` (`idGebruiker`),
+  ADD CONSTRAINT `fk_patient_gebruikers2` FOREIGN KEY (`Apotheek_idApotheek`) REFERENCES `gebruikers` (`idGebruiker`);
 
 --
 -- Beperkingen voor tabel `patient_has_medicijnen`

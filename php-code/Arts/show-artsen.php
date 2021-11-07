@@ -7,7 +7,7 @@ function ShowArtsen(){
     $pdo = $con->make();
 
     $sql = 'SELECT * 
-		FROM arts';
+		FROM gebruikers where role = 3';
 
     $statement = $pdo->query($sql);
 
@@ -29,14 +29,14 @@ function ShowArtsen(){
             // echo "Patient"."<br>";
             // echo $patienten['Zilverenkruisnummer'] . "\n" . $patienten['Voornaam']. "\n" .$patienten['Tussenvoegsel']. "\n" .$patienten['Achternaam']. "\n" .$patienten['Geboortedatum'].'<br>';
             echo "<tr>
-            <td>".$arts['Naam_Arts']."</td>
+            <td>".$arts['Naam_Gebruiker']."</td>
             <td>". $arts['Address']."</td>
             <td>". $arts['Telefoonnummer']."</td>
             <td>".$arts['Email']."</td>";
               // echo "<td> <a href='/dropdown-patient.php?verwijder_patient&id=".$patient['idPatient']."'>Delete</a>";
-              echo "<td> <a href='php-code/Arts/edit-arts.php?id=".$arts['idArts']."'>Edit</a>";
+              echo "<td> <a href='php-code/Arts/edit-arts.php?id=".$arts['idGebruiker']."'>Edit</a>";
             //   echo "<td> <a href='patient-edit.php?id=".$apotheek['idApotheek']."'>Edit</a>";
-              echo "<td> <a href='php-code/Arts/delete-arts.php?id=".$arts['idArts']."'>Delete</a>";
+              echo "<td> <a href='php-code/Arts/delete-arts.php?id=".$arts['idGebruiker']."'>Delete</a>";
             //   echo "<td> <a href='php-code/delete_patient.php?id=".$apotheek['idApotheek']."'>Delete</a>";
             "
           </tr>";

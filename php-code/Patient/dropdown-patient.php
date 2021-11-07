@@ -4,12 +4,13 @@ function dropdownarts(){
     require_once '../connect.php';
     $con = new connection();
     $pdo = $con->make();  
-    $smt = $pdo->prepare("SELECT idArts, Naam_Arts FROM arts");
+    $smt = $pdo->prepare("SELECT idGebruiker, Naam_Gebruiker FROM gebruikers where role = 3");
     $smt->execute();
     $data = $smt->fetchAll();
     $pdo = null;
     return $data;
 }
+
 
 
 function dropdownapotheek(){
@@ -18,13 +19,12 @@ function dropdownapotheek(){
     $pdo = $con->make();
    
     
-    $smt = $pdo->prepare("SELECT idApotheek, Naam_Apotheek FROM apotheek");
+    $smt = $pdo->prepare("SELECT idGebruiker, Naam_Gebruiker FROM gebruikers where role = 2");
     $smt->execute();
     $data2 = $smt->fetchAll(PDO::FETCH_ASSOC);
     $pdo = null;
     return $data2;
 }
-
 
 
 
@@ -50,6 +50,8 @@ function patientenLatenZien(){
               <th>Tussenvoegsel</th>
               <th>Achternaam</th>
               <th>Geboortedatum</th>
+
+              
               <th>Acties</th>
               <th>  </th>
               <th>  </th>
@@ -65,12 +67,14 @@ function patientenLatenZien(){
             <td>".$patient['Achternaam']."</td>
             <td>".$patient['Geboortedatum']."</td>";
        
-            
+            echo "<td> <a href='php-code/Patient/patient-view.php?id=".$patient['idPatient']."'>View</a>";
+            if($_SESSION['role'] == 1){
               // echo "<td> <a href='/dropdown-patient.php?verwijder_patient&id=".$patient['idPatient']."'>Delete</a>";
-              echo "<td> <a href='php-code/Patient/patient-view.php?id=".$patient['idPatient']."'>View</a>";
-              echo "<td> <a href='php-code/Patient/patient-edit.php?id=".$patient['idPatient']."'>Edit</a>";
-              echo "<td> <a href='php-code/delete_patient.php?id=".$patient['idPatient']."'>Delete</a>";
               
+              echo "<td> <a href='php-code/Patient/patient-edit.php?id=".$patient['idPatient']."'>Edit</a>";
+              echo "<td> <a href='php-code/Patient/delete_patient.php?id=".$patient['idPatient']."'>Delete</a>";
+            }
+            
 
             
             "
@@ -92,9 +96,7 @@ function patientview(){
   $con = new connection();
       $pdo = $con->make();
 
-  $sql = 'SELECT *
-      FROM patient inner join arts on idArts = patient.Arts_idArts inner join apotheek on idApotheek = patient.Apotheek_idApotheek
-          WHERE idPatient = :idp';
+  $sql = 'SELECT * FROM patient inner join gebruikers on gebruikers.idGebruiker = patient.Arts_idArts WHERE idPatient = :idp';
           
   $statement = $pdo->prepare($sql);
   $statement->execute([
@@ -111,6 +113,36 @@ function patientview(){
 // 	echo $pat['idPatient'] . '.' . $pat['Voornaam'];
 // }
 }
+
+function patientviewMedi(){
+
+  $id = $_GET['id'];
+
+  require_once '../connect.php';
+  $con = new connection();
+      $pdo = $con->make();
+
+  $sql = 'SELECT * FROM patient_has_medicijnen inner join medicijnen on patient_has_medicijnen.Medicijnen_idMedicijnen = medicijnen.idMedicijnen WHERE Patient_idPatient = :idp;';
+          
+  $statement = $pdo->prepare($sql);
+  $statement->execute([
+    ':idp' => $id
+    
+  ]);
+
+  $patmed = $statement->fetch(PDO::FETCH_ASSOC);
+  $pdo=null;
+  return $patmed;
+
+
+// if ($pat) {
+// 	echo $pat['idPatient'] . '.' . $pat['Voornaam'];
+// }
+}
+
+
+
+
 
 
 
